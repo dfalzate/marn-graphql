@@ -6,9 +6,11 @@ import { createHttpLink } from 'apollo-link-http';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { setContext } from 'apollo-link-context';
 
+require('dotenv').config();
+export const apiURL = process.env.REACT_APP_API_URL
+
 const httpLink = createHttpLink({
-  uri: 'http://localhost:5000'
-  
+  uri: apiURL
 });
 
 const authLink = setContext(() => {
