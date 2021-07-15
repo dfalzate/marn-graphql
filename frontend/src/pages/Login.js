@@ -83,7 +83,7 @@ function Login(props) {
       props.history.push('/');
     },
     onError(err) {
-      console.log("THis is  error",err.graphQLErrors[0])
+      console.log("This is  error",err.graphQLErrors[0])
       if(err.graphQLErrors[0].extensions.exception.errors.general==="User not found")
       {
         addUser()
