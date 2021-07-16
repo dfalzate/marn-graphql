@@ -102,7 +102,7 @@ function SinglePost(props) {
                   <Button
                     as="div"
                     labelPosition="right"
-                    onClick={() => console.log('Comment on post')}
+                    onClick={() => console.log('Comentario en post')}
                   >
                     <Button basic color="blue">
                       <Icon name="comments" />
@@ -120,12 +120,12 @@ function SinglePost(props) {
             {user && (
               <Card fluid>
                 <Card.Content>
-                  <p>Post a comment</p>
+                  <p>Escribí un comentario</p>
                   <Form>
                     <div className="ui action input fluid">
                       <input
                         type="text"
-                        placeholder="Comment.."
+                        placeholder="Commntario.."
                         name="comment"
                         value={comment}
                         onChange={(event) => setComment(event.target.value)}
@@ -137,7 +137,7 @@ function SinglePost(props) {
                         disabled={comment.trim() === ''}
                         onClick={submitComment}
                       >
-                        Submit
+                        Enviar
                       </button>
                     </div>
                   </Form>

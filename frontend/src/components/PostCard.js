@@ -31,7 +31,7 @@ function PostCard({
         />
         <Card.Header>{username}</Card.Header>
         <br></br>
-        <Card.Meta >
+        <Card.Meta>
           Posteado hace {moment(createdAt).fromNow(true)}
         </Card.Meta>
         <br></br>

@@ -35,9 +35,6 @@ function MenuBar() {
         as={Link}
         to="/"
       >MiniForo</Menu.Item>
-      
-        
-
 
       <Menu.Item position="right">
         <Menu.Item

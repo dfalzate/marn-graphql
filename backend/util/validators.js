@@ -7,23 +7,23 @@ module.exports.validateRegisterInput = (
 ) => {
   const errors = {};
   if (username.trim() === '') {
-    errors.username = 'Username must not be empty';
+    errors.username = 'Debe indicar un nombre de usuario.';
   }
  
   if (email.trim() === '') {
-    errors.email = 'Email must not be empty';
+    errors.email = 'Debe indicar un e-mail.';
   } else {
     const regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
     if (!email.match(regEx)) {
-      errors.email = 'Email must be a valid email address';
+      errors.email = 'Formato de email no válido.';
     }
   }
   if (googleId==="")
   {
     if (password === '') {
-      errors.password = 'Password must not be empty';
+      errors.password = 'Debe indicar un password.';
     } else if (password !== confirmPassword) {
-      errors.confirmPassword = 'Passwords must match';
+      errors.confirmPassword = 'Los passwords deben coincidir.';
     }
   }
 
@@ -37,14 +37,12 @@ module.exports.validateRegisterInput = (
 module.exports.validateLoginInput = (email, password) => {
   const errors = {};
   if (email.trim() === '') {
-    errors.email = 'Email must not be empty';
+    errors.email = 'Debe indicar un email.';
   }
 
     if (password.trim() === '') {
-      errors.password = 'Password must not be empty';
+      errors.password = 'Debe indicar un password.';
     }
-
-
 
   return {
     errors,

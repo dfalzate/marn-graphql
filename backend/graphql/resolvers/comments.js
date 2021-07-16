@@ -9,9 +9,9 @@ module.exports = {
     createComment: async (_, { postId, body }, context) => {
       const { username,email } = checkAuth(context);
       if (body.trim() === '') {
-        throw new UserInputError('Empty comment', {
+        throw new UserInputError('No hay texto.', {
           errors: {
-            body: 'Comment body must not empty'
+            body: 'Esto no debe quedar vacío.'
           }
         });
       }
@@ -25,30 +25,30 @@ module.exports = {
           createdAt: new Date().toISOString()
         });
         await post.save();
-        console.log("This is the comment added", body, email, SENDGRID)
+        
         sgMail.setApiKey(
           SENDGRID
         );
         const msg = {
           
           to: post.email,
-          from: SENDER, // Change to your verified sender
-          subject: "New Comment",
-          text: "Your Post has a new comment from "+username,
+          from: SENDER, 
+          subject: "Te dejaron un comentario en el MiniForo 🥳 📩",
+          text: "Tu posteo recibió un comentario de "+username,
           html: `
-          <p>Your post " ${post.body} " has recieved a new comment " ${body} " from ${username} </p>
-              `,
+          <p>Tu posteo " ${post.body} " recibió este comentario " ${body} " de ${username} 🥳 </p>
+          `,
         };
         sgMail
           .send(msg)
           .then(() => {
-            return console.log("Email sent to: " + msg.to );
+            return console.log("Email enviado a: " + msg.to );
           })
           .catch((error) => {
-            return console.error("This is error", error);
+            return console.error(error);
           });
         return post;
-      } else throw new UserInputError('Post not found');
+      } else throw new UserInputError('Posteo no encontrado');
     },
     async deleteComment(_, { postId, commentId }, context) {
       const { username } = checkAuth(context);
@@ -64,10 +64,10 @@ module.exports = {
           
           return post;
         } else {
-          throw new AuthenticationError('Action not allowed');
+          throw new AuthenticationError('No está autorizado.');
         }
       } else {
-        throw new UserInputError('Post not found');
+        throw new UserInputError('Posteo no encontrado');
       }
     }
   }

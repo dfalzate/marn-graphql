@@ -11,7 +11,6 @@ require('dotenv').config();
 export const clientID = process.env.REACT_APP_GOOGLE_CLIENT_ID
 
 
-
 function Login(props) {
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
@@ -29,7 +28,7 @@ function Login(props) {
         image: response.profileObj.imageUrl,
         googleId: response.profileObj.googleId,
       };
-      // onChangeGoogle("googleId",params.googleId)
+      
       onChangeGoogle(params)
       loginUser()
     }
@@ -105,7 +104,7 @@ function Login(props) {
         <h1>Login</h1>
         <Form.Input
           label="E-mail:"
-          placeholder="yo@mail.com"
+          placeholder="mail@mail.com"
           name="email"
           type="text"
           value={values.email}
@@ -127,10 +126,10 @@ function Login(props) {
         <div style={{width:"100%", height:20}}></div>
         <GoogleLogin
 
-style={{ marginTop: 5 }}
+style={{ marginTop: 20 }}
 
 clientId={clientID}
-buttonText="LOGIN WITH GOOGLE"
+buttonText="GOOGLE LOGIN"
 onSuccess={responseGoogle}
 onFailure={responseGoogle}
 />

@@ -27,7 +27,7 @@ module.exports = {
       }
 
       const user = await User.findOne({email});
-      console.log("This is user",user)
+      
       if(!user){
         errors.general = 'User not found';
         throw new UserInputError('User not found', { errors});
@@ -53,21 +53,21 @@ module.exports = {
         registerInput: { username, email, password, confirmPassword, image, googleId }
       },
     ) {
-      // Validate user data
+      
       const {valid, errors} = validateRegisterInput(username, email, password, confirmPassword, image, googleId);
       if(!valid){
         throw new UserInputError('Errors', {errors});
       }
-      // TODO: Make sure user doesnt already exist
+      
       const user = await User.findOne({ email });
       if (user) {
-        throw new UserInputError('Email is taken', {
+        throw new UserInputError('Ya existe un usuario con ese email.', {
           errors: {
-            username: 'This username is taken'
+            username: 'Ya existe un usuario con ese nombre'
           }
         })
       }
-      // hash password and create an auth token
+      
       password = await bcrypt.hash(password, 12);
 
       const newUser = new User({
@@ -80,8 +80,6 @@ module.exports = {
       });
 
       const res = await newUser.save();
-
-      console.log("This is res on new User",res)
 
       const token = generateToken(res)
 

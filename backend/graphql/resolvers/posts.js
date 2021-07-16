@@ -7,7 +7,7 @@ module.exports = {
   Query: {
     async getPosts() {
       try {
-        // sort posts in descending order, last post first
+        
         const posts = await Post.find().sort({ createdAt: -1 });
         return posts;
       } catch (err) {
@@ -15,13 +15,13 @@ module.exports = {
       }
     },
     async getPost(_, { postId }) {
-      console.log('getPost');
+      
       try {
         const post = await Post.findById(postId);
         if (post) {
           return post;
         } else {
-          throw new Error('Post not found');
+          throw new Error('Posteo no encontrado');
         }
       } catch (err) {
         throw new Error(err);
@@ -30,11 +30,11 @@ module.exports = {
   },
   Mutation: {
     async createPost(_, { body }, context) {
-      console.log('createPost');
+      
       const user = checkAuth(context);
 
       if (body.trim() === '') {
-        throw new Error('Post body must not be empty');
+        throw new Error('Esto no debe quedar vacío.');
       }
 
       const newPost = new Post({
@@ -57,9 +57,9 @@ module.exports = {
         const post = await Post.findById(postId);
         if (user.username === post.username) {
           await post.delete();
-          return 'Post deleted successfully';
+          return 'Posteo borrado.';
         } else {
-          throw new AuthenticationError('Action not allowed');
+          throw new AuthenticationError('No autorizado.');
         }
       } catch (err) {
         throw new Error(err);
@@ -71,11 +71,11 @@ module.exports = {
       const post = await Post.findById(postId);
       if (post) {
         if (post.likes.find((like) => like.username === username)) {
-          //  Post already liked, unlike it
+          
           post.likes = post.likes.filter((like) => like.username !== username);
           await post.save();
         } else {
-          //  Not liked, like post
+          
           post.likes.push({
             username,
             createdAt: new Date().toISOString(),
@@ -84,7 +84,7 @@ module.exports = {
 
         await post.save();
         return post;
-      } else throw new UserInputError('Post not found');
+      } else throw new UserInputError('Posteo no encontrado');
     },
   },
 };

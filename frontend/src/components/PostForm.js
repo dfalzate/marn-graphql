@@ -11,12 +11,11 @@ function PostForm() {
     body: "",
   });
 
-  console.log("THis is the value", values)
   const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
     variables: values,
     update(proxy, result) {
       const data = proxy.readQuery({ query: FETCH_POSTS_QUERY });
-      console.log("This is the data", data)
+      
       proxy.writeQuery({
         query: FETCH_POSTS_QUERY,
         data: { getPosts: [result.data.createPost, ...data.getPosts] },
@@ -51,13 +50,7 @@ function PostForm() {
           </Button>
         </Form.Field>
       </Form>
-      {error && (
-        <div className="ui error message" style={{ marginBottom: 20 }}>
-          <ul className="list">
-            {/* <li>{error.graphQLErrors[0].message}</li> */}
-          </ul>
-        </div>
-      )}
+     
     </>
   );
 }

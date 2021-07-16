@@ -23,7 +23,7 @@ function Register(props) {
         image: response.profileObj.imageUrl,
         googleId: response.profileObj.googleId,
       };
-      // onChangeGoogle("googleId",params.googleId)
+      
       onChangeGoogle(params)
       addUser()
     }
@@ -70,13 +70,13 @@ function Register(props) {
         data: { login: userData }
       }
     ) {
-      console.log("This is logoin",userData)
+      
       context.login(userData);
       props.history.push('/');
     },
     onError(err) {
-      console.log("THis is  error",err.graphQLErrors[0])
-      // setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      console.log(err.graphQLErrors[0])
+      
     },
     variables: values
   });
@@ -132,9 +132,9 @@ function Register(props) {
         <GoogleLogin
 
                   style={{ marginTop: 5 }}
-                  // className="googleButton"
-                  clientId={clientID} //CLIENTID NOT CREATED YET
-                  buttonText="LOGIN WITH GOOGLE"
+                  
+                  clientId={clientID} 
+                  buttonText="GOOGLE LOGIN"
                   onSuccess={responseGoogle}
                   onFailure={responseGoogle}
                 />

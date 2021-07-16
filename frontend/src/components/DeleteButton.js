@@ -45,6 +45,7 @@ function DeleteButton({ postId, commentId, callback }) {
         </Button>
       </MyPopup>
       <Confirm
+        content='Estás segur@?' 
         open={confirmOpen}
         onCancel={() => setConfirmOpen(false)}
         onConfirm={deletePostOrMutation}

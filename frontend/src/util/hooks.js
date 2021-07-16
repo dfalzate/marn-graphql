@@ -6,12 +6,12 @@ export const useForm = (callback, initialState = {}) => {
 
   const onChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
-    console.log("This is values",values)
+    
   };
 
   const onChangeGoogle = (values) => {
     setValues(values);
-    console.log("This si the values",values)
+    
   };
 
   const onSubmit = (event) => {
