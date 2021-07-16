@@ -2,6 +2,8 @@
 
 ## React FrontEnd and Apollo-Server BackEnd
 
+## Author: David Leda
+
 ## Installation
 
 Install the dependencies for the FrontEnd and BackEnd separately:
@@ -22,10 +24,11 @@ SENDGRIP_KEY=xxxxxxxx
 SENDER=email@email.com
 ```
 
-And include an .env file in the FrontEnd with your GOOGLE AUTH CLIENT ID:
+And include an .env file in the FrontEnd with your Google Auth Client ID and the BackEnd URL:
 
 ```sh
 REACT_APP_GOOGLE_CLIENT_ID=
+REACT_APP_API_URL=http://localhost:5000
 ```
 
 First run the BackEnd (it runs on port 5000):
