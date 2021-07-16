@@ -2,6 +2,9 @@ import React, { useContext, useState, useRef } from "react";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import moment from "moment";
+import 'moment/locale/es-mx';
+
+
 import {
   Button,
   Card,
@@ -69,7 +72,7 @@ function SinglePost(props) {
       commentCount,
       image
     } = getPost;
-    console.log("THis is the post",image)
+   
     postMarkup = (
       <Grid>
         <Grid.Row>
@@ -85,7 +88,9 @@ function SinglePost(props) {
             <Card fluid>
               <Card.Content>
                 <Card.Header>{username}</Card.Header>
-                <Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
+                <br></br>
+                <Card.Meta>Posteado {moment(createdAt).fromNow()}</Card.Meta>
+                <br></br>
                 <Linkify componentDecorator={componentDecorator}>
                 <Card.Description>{body}</Card.Description>
                 </Linkify>
@@ -146,8 +151,10 @@ function SinglePost(props) {
                     <DeleteButton postId={id} commentId={comment.id} />
                   )}
                   <Card.Header>{comment.username}</Card.Header>
+                  <br></br>
                   <Card.Meta>{moment(comment.createdAt).fromNow()}</Card.Meta>
                   <Linkify componentDecorator={componentDecorator}>
+                    <br></br>
                   <Card.Description>{comment.body}</Card.Description>
                   </Linkify>
                 </Card.Content>

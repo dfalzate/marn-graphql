@@ -88,10 +88,10 @@ function Register(props) {
   return (
     <div className="form-container">
       <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
-        <h1>Register</h1>
+        <h1>Registrate</h1>
         <Form.Input
-          label="Username"
-          placeholder="Username.."
+          label="Usuario:"
+          placeholder="Usuario.."
           name="username"
           type="text"
           value={values.username}
@@ -99,8 +99,8 @@ function Register(props) {
           onChange={onChange}
         />
         <Form.Input
-          label="Email"
-          placeholder="Email.."
+          label="E-mail:"
+          placeholder="yo@mail.com"
           name="email"
           type="email"
           value={values.email}
@@ -108,7 +108,7 @@ function Register(props) {
           onChange={onChange}
         />
         <Form.Input
-          label="Password"
+          label="Password:"
           placeholder="Password.."
           name="password"
           type="password"
@@ -117,8 +117,8 @@ function Register(props) {
           onChange={onChange}
         />
         <Form.Input
-          label="Confirm Password"
-          placeholder="Confirm Password.."
+          label="Confirmar Password:"
+          placeholder="Password.."
           name="confirmPassword"
           type="password"
           value={values.confirmPassword}
@@ -126,7 +126,7 @@ function Register(props) {
           onChange={onChange}
         />
         <Button type="submit" primary>
-          Register
+          Registrarse
         </Button>
         <div style={{width:"100%", height:20}}></div>
         <GoogleLogin

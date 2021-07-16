@@ -36,18 +36,18 @@ function PostForm() {
   return (
     <>
       <Form onSubmit={onSubmit}>
-        <h2>Create a post:</h2>
+        <h3>Escribí algo:</h3>
         <Form.Field verticalAlign='middle'>
           <Form.TextArea
-            placeholder="Hi World!"
+            placeholder="Hola..."
             name="body"
             onChange={onChange}
             value={values.body}
             error={error ? true : false}
-            style={{ minHeight: 200 }}
+            style={{ minHeight: 240 }}
           />
           <Button type="submit" color="teal" style={{ marginBottom: 40 }}>
-            Submit
+            Postear
           </Button>
         </Form.Field>
       </Form>

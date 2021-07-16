@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Button, Card, Icon, Label, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import 'moment/locale/es-mx';
 
 
 import { AuthContext } from "../context/auth";
@@ -18,7 +19,7 @@ function PostCard({
 
   return (
     <Card 
-      fluid style={{ marginTop: 45 }}
+      fluid style={{ marginTop: 38 }}
       
       >
       <Card.Content >
@@ -31,7 +32,7 @@ function PostCard({
         <Card.Header>{username}</Card.Header>
         <br></br>
         <Card.Meta >
-          Created {moment(createdAt).fromNow(true)} ago
+          Posteado hace {moment(createdAt).fromNow(true)}
         </Card.Meta>
         <br></br>
         <Linkify>

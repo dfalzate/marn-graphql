@@ -10,7 +10,7 @@ import { useForm } from '../util/hooks';
 require('dotenv').config();
 export const clientID = process.env.REACT_APP_GOOGLE_CLIENT_ID
 
-console.log(clientID)
+
 
 function Login(props) {
   const context = useContext(AuthContext);
@@ -53,7 +53,7 @@ function Login(props) {
       props.history.push('/');
     },
     onError(err) {
-      console.log("THis is  error",err.graphQLErrors[0])
+      
       if(err.graphQLErrors[0] && err.graphQLErrors[0].extensions.exception.errors.username)
       {
         loginUser()
@@ -78,12 +78,12 @@ function Login(props) {
         data: { login: userData }
       }
     ) {
-      console.log("This is logoin",userData)
+      
       context.login(userData);
       props.history.push('/');
     },
     onError(err) {
-      console.log("This is  error",err.graphQLErrors[0])
+      
       if(err.graphQLErrors[0].extensions.exception.errors.general==="User not found")
       {
         addUser()
@@ -104,8 +104,8 @@ function Login(props) {
       <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
         <h1>Login</h1>
         <Form.Input
-          label="Email"
-          placeholder="email.."
+          label="E-mail:"
+          placeholder="yo@mail.com"
           name="email"
           type="text"
           value={values.email}
@@ -113,7 +113,7 @@ function Login(props) {
           onChange={onChange}
         />
         <Form.Input
-          label="Password"
+          label="Password:"
           placeholder="Password.."
           name="password"
           type="password"
@@ -128,7 +128,7 @@ function Login(props) {
         <GoogleLogin
 
 style={{ marginTop: 5 }}
-// className="googleButton"
+
 clientId={clientID}
 buttonText="LOGIN WITH GOOGLE"
 onSuccess={responseGoogle}

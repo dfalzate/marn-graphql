@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { Grid, Header, Image } from "semantic-ui-react";
+import { Grid, Header} from "semantic-ui-react";
 
 import { AuthContext } from "../context/auth";
 import PostCard from "../components/PostCard";
@@ -13,29 +13,11 @@ function Home() {
   const { loading, data: { getPosts: posts } = {} } = useQuery(
     FETCH_POSTS_QUERY
   );
-console.log("These are posts",posts,user)
-  return (
-    <div>
-    <Header as='h2' icon textAlign='center' style={{ margin: 40 }}>
-      {/* <Icon name='users' circular /> */}
-      {
-        user?      <Image
-        // floated="center"
-        size="mini"
-        style={{borderRadius:50, height:80, width:80}}
-        src={user.image!==""?user.image:"https://i.imgur.com/xGPAyXi.png"}
-        // src={user.url}
-      />:<Image
-      // floated="center"
-      size="mini"
-      style={{borderRadius:50, height:80, width:80}}
-      src={"https://i.imgur.com/xGPAyXi.png"}
-      // src={user.url}
-    />
-      }
 
-        <div style={{width:'100%', height:20}}></div>
-      <Header.Content>Recent Posts</Header.Content>
+  return (
+    <div style={{ marginTop: 40, marginBottom: 100 }}>
+    <Header as='h1' icon textAlign='center' style={{ fontSize: 50, color: 'midnightblue', width: '30%', margin: 'auto', padding: 20, borderRadius: 10, backgroundColor: 'snow' }}>
+      <Header.Content><u>MiniForo</u></Header.Content>
     </Header>
 
     <Grid divided='vertically'>
@@ -52,7 +34,7 @@ console.log("These are posts",posts,user)
         
         <Grid.Column width={10}>
         {loading ? (
-          <h1>Loading posts..</h1>
+          <h1>Buscando en la DB...</h1>
         ) : (
           <Grid.Row style={{ marginBottom: 20 }} >
             {posts &&

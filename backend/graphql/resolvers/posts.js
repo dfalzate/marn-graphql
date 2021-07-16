@@ -43,7 +43,7 @@ module.exports = {
         username: user.username,
         email: user.email,
         image:user.image,
-        createdAt: new Date().toISOString("es-ES"),
+        createdAt: new Date().toISOString(),
       });
 
       const post = await newPost.save();
