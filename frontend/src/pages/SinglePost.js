@@ -120,12 +120,12 @@ function SinglePost(props) {
             {user && (
               <Card fluid>
                 <Card.Content>
-                  <p>Escribí un comentario</p>
+                  <p>Escribí un comentario:</p>
                   <Form>
                     <div className="ui action input fluid">
                       <input
                         type="text"
-                        placeholder="Commntario.."
+                        placeholder="Comentario..."
                         name="comment"
                         value={comment}
                         onChange={(event) => setComment(event.target.value)}
